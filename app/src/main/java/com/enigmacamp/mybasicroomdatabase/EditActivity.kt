@@ -31,6 +31,9 @@ class EditActivity : AppCompatActivity() {
             }
             Constant.TYPE_READ -> {
                 button_save.visibility = View.GONE
+                edit_nama.isEnabled = false
+                edit_address1.isEnabled = false
+                edit_address2.isEnabled = false
                 getNote()
             }
         }
