@@ -24,7 +24,7 @@ class EditActivity : AppCompatActivity() {
                  db.noteDao().addNote(
                      //addNote yg kita butuhkan adalah id,title,dan notenya
                      //id disini karena sudah auto generate maka tidak harus diisi
-                     Note(0,edit_title.text.toString(),edit_note.text.toString())
+                     Note(0,edit_nama.text.toString(),edit_address1.text.toString(),edit_address2.text.toString())
                  )
                  finish()
              }

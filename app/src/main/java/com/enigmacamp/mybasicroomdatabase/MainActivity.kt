@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         noteAdapter = NoteAdapter(arrayListOf(),object : NoteAdapter.OnAdapterListener{
             override fun onClick(note: Note) {
-                Toast.makeText(applicationContext,note.title,Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,note.nama,Toast.LENGTH_SHORT).show()
             }
 
         })
