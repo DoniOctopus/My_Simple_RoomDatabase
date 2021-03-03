@@ -1,10 +1,12 @@
 package com.enigmacamp.mybasicroomdatabase
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enigmacamp.mybasicroomdatabase.room.Constant
 import com.enigmacamp.mybasicroomdatabase.room.Note
@@ -64,10 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDelete(note: Note) {
-                CoroutineScope(Dispatchers.IO).launch {
-                    db.noteDao().deleteNote(note)
-                    loadData()
-                }
+                deletedDialog(note)
             }
 
         })
@@ -84,5 +83,24 @@ class MainActivity : AppCompatActivity() {
             .putExtra("intent_type", intentType)
 
         )
+    }
+
+    private fun deletedDialog(note: Note){
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.apply {
+            setTitle("Konfirmasi")
+            setMessage("Yakin Mau Menghapus ${note.nama}?")
+            setNegativeButton("Batal") { dialogInterface, i ->
+            dialogInterface.dismiss()
+            }
+            setPositiveButton("Hapus") { dialogInterface, i ->
+                dialogInterface.dismiss()
+                CoroutineScope(Dispatchers.IO).launch {
+                    db.noteDao().deleteNote(note)
+                    loadData()
+                }
+            }
+        }
+        alertDialog.show()
     }
 }
