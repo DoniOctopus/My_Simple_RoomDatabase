@@ -12,17 +12,16 @@
         android:id="@+id/edit_nama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Judul"
+        android:hint="nama"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
     <EditText
-        android:id="@+id/edit_address1"
+        android:id="@+id/edit_umur"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="adress1"
-        android:minLines="3"
+        android:hint="umur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_nama"
@@ -30,14 +29,13 @@
         android:gravity="top"
         />
     <EditText
-        android:id="@+id/edit_address2"
+        android:id="@+id/edit_alamat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="adress2"
-        android:minLines="3"
+        android:hint="alamat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_address1"
+        app:layout_constraintTop_toBottomOf="@+id/edit_umur"
         android:layout_marginTop="10dp"
         android:gravity="top"
         />
@@ -48,7 +46,7 @@
         android:text="SAVE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_address2"
+        app:layout_constraintTop_toBottomOf="@+id/edit_alamat"
         android:layout_marginTop="20dp"
         />
     <Button
