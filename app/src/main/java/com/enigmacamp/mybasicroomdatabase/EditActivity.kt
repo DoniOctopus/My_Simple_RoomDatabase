@@ -15,12 +15,15 @@ import kotlinx.coroutines.launch
 
 class EditActivity : AppCompatActivity() {
     val db by lazy { NoteDB(this) }
+
     private var noteId = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
         setupView()
         setupLstener()
+
+
     }
 
     fun setupView() {
@@ -47,18 +50,23 @@ class EditActivity : AppCompatActivity() {
 
     private fun setupLstener() {
         button_save.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                db.noteDao().addNote(
-                    //addNote yg kita butuhkan adalah id,title,dan notenya
-                    //id disini karena sudah auto generate maka tidak harus diisi
-                    Note(
-                        0,
-                        edit_nama.text.toString(),
-                        edit_umur.text.toString(),
-                        edit_alamat.text.toString()
-                    )
-                )
-                finish()
+            var isEmptyFields = false
+            when{
+                edit_nama.text.isEmpty() ->{
+                    isEmptyFields = true
+                    edit_nama.error = "Field Ini tidak Boleh Kosong"
+                }
+                edit_umur.text.isEmpty() ->{
+                    isEmptyFields = true
+                    edit_umur.error = "Field Ini tidak Boleh Kosong"
+                }
+                edit_alamat.text.isEmpty() ->{
+                    isEmptyFields = true
+                    edit_alamat.error = "Field Ini tidak Boleh Kosong"
+                }
+            }
+            if (!isEmptyFields){
+               createdCustomer()
             }
         }
         button_update.setOnClickListener {
@@ -91,5 +99,21 @@ class EditActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    fun createdCustomer(){
+        CoroutineScope(Dispatchers.IO).launch {
+            db.noteDao().addNote(
+                    //addNote yg kita butuhkan adalah id,title,dan notenya
+                    //id disini karena sudah auto generate maka tidak harus diisi
+                    Note(
+                            0,
+                            edit_nama.text.toString(),
+                            edit_umur.text.toString(),
+                            edit_alamat.text.toString()
+                    )
+            )
+            finish()
+        }
     }
 }
