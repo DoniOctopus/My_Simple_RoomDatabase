@@ -28,13 +28,18 @@ class EditActivity : AppCompatActivity() {
         val intentType = intent.getIntExtra("intent_type", 0)
         when (intentType) {
             Constant.TYPE_CREATE -> {
-
+                button_update.visibility = View.GONE
             }
             Constant.TYPE_READ -> {
                 button_save.visibility = View.GONE
+                button_update.visibility = View.GONE
                 edit_nama.isEnabled = false
                 edit_umur.isEnabled = false
                 edit_alamat.isEnabled = false
+                getNote()
+            }
+            Constant.TYPE_UPDATE -> {
+                button_save.visibility = View.GONE
                 getNote()
             }
         }
@@ -52,6 +57,21 @@ class EditActivity : AppCompatActivity() {
                         edit_umur.text.toString(),
                         edit_alamat.text.toString()
                     )
+                )
+                finish()
+            }
+        }
+        button_update.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                db.noteDao().updateNote(
+                        //addNote yg kita butuhkan adalah id,title,dan notenya
+                        //id disini karena sudah auto generate maka tidak harus diisi
+                        Note(
+                                noteId,
+                                edit_nama.text.toString(),
+                                edit_umur.text.toString(),
+                                edit_alamat.text.toString()
+                        )
                 )
                 finish()
             }

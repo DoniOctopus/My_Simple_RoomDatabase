@@ -18,12 +18,17 @@ class NoteAdapter(private val notes: ArrayList<Note>, private val listener : OnA
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_note,parent,false)
         )
     }
-
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = notes[position]
         holder.view.text_title.text =  note.nama
         holder.view.text_title.setOnClickListener {
             listener.onClick(note)
+        }
+        holder.view.icon_edit.setOnClickListener {
+            listener.onUpdate(note)
+        }
+        holder.view.icon_delete.setOnClickListener {
+
         }
     }
 
@@ -39,5 +44,8 @@ class NoteAdapter(private val notes: ArrayList<Note>, private val listener : OnA
 
     interface OnAdapterListener{
         fun onClick(note: Note)
+        fun onUpdate(note: Note)
+
     }
+
 }

@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
     //Berpindah ke EditActivity
     private fun setupListener(){
         button_create.setOnClickListener {
-//            startActivity(Intent(this,EditActivity::class.java))
             intentEdit(0,Constant.TYPE_CREATE)
         }
     }
@@ -53,11 +52,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         noteAdapter = NoteAdapter(arrayListOf(),object : NoteAdapter.OnAdapterListener{
             override fun onClick(note: Note) {
-//                startActivity(Intent(
-//                    applicationContext,EditActivity::class.java)
-//                    .putExtra("intent_id", note.id)
-//                )
+                //read detail note
                 intentEdit(note.id,Constant.TYPE_READ)
+            }
+            override fun onUpdate(note: Note) {
+                intentEdit(note.id,Constant.TYPE_UPDATE)
             }
 
         })
