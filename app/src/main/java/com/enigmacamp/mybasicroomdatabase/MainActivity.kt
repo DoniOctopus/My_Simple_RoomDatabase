@@ -33,8 +33,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        loadData()
+    }
+
+    fun loadData(){
         CoroutineScope(Dispatchers.IO).launch {
-           val notes = db.noteDao().getNotes()
+            val notes = db.noteDao().getNotes()
             Log.d(activityMain,"DbResponese : $notes")
             withContext(Dispatchers.Main){
                 noteAdapter.setData(notes)
@@ -57,6 +61,13 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onUpdate(note: Note) {
                 intentEdit(note.id,Constant.TYPE_UPDATE)
+            }
+
+            override fun onDelete(note: Note) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    db.noteDao().deleteNote(note)
+                    loadData()
+                }
             }
 
         })
