@@ -28,7 +28,7 @@ abstract class NoteDB : RoomDatabase(){
             context.applicationContext,
             NoteDB::class.java,
             //namaDatabsaenya
-            "note.db"
+            "mst_notes.db"
         ).build()
 
     }

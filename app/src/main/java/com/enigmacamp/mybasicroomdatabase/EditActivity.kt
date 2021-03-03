@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.enigmacamp.mybasicroomdatabase.room.Note
 import com.enigmacamp.mybasicroomdatabase.room.NoteDB
 import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +23,7 @@ class EditActivity : AppCompatActivity() {
                  db.noteDao().addNote(
                      //addNote yg kita butuhkan adalah id,title,dan notenya
                      //id disini karena sudah auto generate maka tidak harus diisi
-                     Note(0,edit_title.text.toString(),edit_note.text.toString())
+                     Note(0,edit_nama.text.toString(),edit_umur.text.toString(),edit_alamat.text.toString())
                  )
                  finish()
              }

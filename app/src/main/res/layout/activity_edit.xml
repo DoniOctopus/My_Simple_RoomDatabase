@@ -9,23 +9,33 @@
     >
 
     <EditText
-        android:id="@+id/edit_title"
+        android:id="@+id/edit_nama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Judul"
+        android:hint="Nama"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
     <EditText
-        android:id="@+id/edit_note"
+        android:id="@+id/edit_umur"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Tulis Catatan"
-        android:minLines="3"
+        android:hint="Umur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_title"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nama"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        />
+    <EditText
+        android:id="@+id/edit_alamat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Alamat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_umur"
         android:layout_marginTop="10dp"
         android:gravity="top"
         />
@@ -36,18 +46,18 @@
         android:text="SAVE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_note"
+        app:layout_constraintTop_toBottomOf="@+id/edit_alamat"
         android:layout_marginTop="20dp"
         />
-    <Button
-        android:id="@+id/button_update"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="UPDATE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_save"
-        android:layout_marginTop="20dp"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/button_update"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="UPDATE"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/button_save"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
