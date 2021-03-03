@@ -9,7 +9,7 @@ data class Note(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
     val nama: String,
-    val address1: String,
-    val address2: String
+    val umur: String,
+    val alamat: String
 
 )

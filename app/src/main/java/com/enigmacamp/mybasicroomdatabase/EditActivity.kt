@@ -32,8 +32,8 @@ class EditActivity : AppCompatActivity() {
             Constant.TYPE_READ -> {
                 button_save.visibility = View.GONE
                 edit_nama.isEnabled = false
-                edit_address1.isEnabled = false
-                edit_address2.isEnabled = false
+                edit_umur.isEnabled = false
+                edit_alamat.isEnabled = false
                 getNote()
             }
         }
@@ -48,8 +48,8 @@ class EditActivity : AppCompatActivity() {
                     Note(
                         0,
                         edit_nama.text.toString(),
-                        edit_address1.text.toString(),
-                        edit_address2.text.toString()
+                        edit_umur.text.toString(),
+                        edit_alamat.text.toString()
                     )
                 )
                 finish()
@@ -62,8 +62,8 @@ class EditActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val notes = db.noteDao().getNote(noteId)[0]
             edit_nama.setText(notes.nama)
-            edit_address1.setText(notes.address1)
-            edit_address2.setText(notes.address2)
+            edit_umur.setText(notes.umur)
+            edit_alamat.setText(notes.alamat)
         }
     }
 }
